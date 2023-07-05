@@ -12,126 +12,62 @@
     --darkGold: #e6aa5a;
     --obnoxiousRed: #E71D36;
     --sunsetOrange: #ffc23d;
+    --gradient--full: linear-gradient(90deg,#c4485e,#fb6100 15%,#99c0c6 65%,#6aa3b4 85%,#0c6a8f);
 }
 
 body {
     background-color: var(--washedWhite);
 }
 
-.alert-bar {
-    background-color: var(--darkGold);
-    height: 25px;
-    padding: 10px;
+a {
+  text-decoration: none;
+  display: inherit;
+  color: inherit;
 }
 
-.alert-bar span {
-    user-select: none;
-    padding-inline: 12px;
-    color: white;
-    font-size: 14px;
-    font-family: 'Unbounded', cursive;
-}
-
-/* Marquee styles */
-.marquee {
-  --gap: 1rem;
-  position: relative;
+.navbar {
+  padding: 20px;
+  height: 100px;
+  background-image: var(--gradient--full);
   display: flex;
-  overflow: hidden;
-  user-select: none;
-  gap: var(--gap);
+  align-items: center;
 }
 
-.marquee li {
-    list-style: none;
-}
-
-.marquee__content {
-  flex-shrink: 0;
+.brand {
   display: flex;
-  justify-content: space-around;
-  gap: var(--gap);
-  min-width: 100%;
+  flex-direction: column;
+  margin-right: 20px; 
 }
 
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
-  }
-}
 
-/* Pause animation when reduced-motion is set */
-@media (prefers-reduced-motion: reduce) {
-  .marquee__content {
-    animation-play-state: paused !important;
-  }
-}
-
-/* Enable animation */
-.enable-animation .marquee__content {
-  animation: scroll 60s linear infinite;
-}
-
-/* Reverse animation */
-.marquee--reverse .marquee__content {
-  animation-direction: reverse;
-}
-
-/* Pause on hover */
-.marquee--hover-pause:hover .marquee__content {
-  animation-play-state: paused;
-}
-
-/* Attempt to size parent based on content. Keep in mind that the parent width is equal to both content containers that stretch to fill the parent. */
-.marquee--fit-content {
-  max-width: fit-content;
-}
-
-/* A fit-content sizing fix: Absolute position the duplicate container. This will set the size of the parent wrapper to a single child container. Shout out to Olavi's article that had this solution 👏 @link: https://olavihaapala.fi/2021/02/23/modern-marquee.html  */
-.marquee--pos-absolute .marquee__content:last-child {
-  position: relative;
-  top: 0;
-  left: 0;
-}
-
-/* Enable position absolute animation on the duplicate content (last-child) */
-.enable-animation .marquee--pos-absolute .marquee__content:last-child {
-  animation-name: scroll-abs;
-}
-
-@keyframes scroll-abs {
-  from {
-    transform: translateX(calc(100% + var(--gap)));
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-/* Other page demo styles */
-.marquee__content > * {
-  flex: 0 0 auto;
+.brand-font {
   color: white;
-  margin: 2px;
-  padding: 1rem 2rem;
-  border-radius: 0.25rem;
-  text-align: center;
+  font-size: 45px;
+  font-family: 'Nothing You Could Do', cursive;
 }
 
-.marquee {
-    background-color: var(--darkGold);
+.navbar p {
+  padding: 40px;
+  position: absolute;
+  font-size: 25px;
+  color: white;
+  font-family: 'Indie Flower', cursive;
 }
 
-.marquee li {
-    user-select: none;
-    color: white;
-    font-size: 14px;
-    font-family: 'Unbounded', cursive;
+.video-overlay {
+  position: relative;
+  width: 100%;
+  height: 82vh;
+  overflow: hidden;
 }
 
-* {
-  box-sizing: border-box;
+.video-overlay video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
 }
+
+
